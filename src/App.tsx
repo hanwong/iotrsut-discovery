@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Input } from "@/components/ui/input";
 import { Banner } from "@/components/Banner";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { Dapp } from "@/components/Dapp";
 
 function App() {
   const { t } = useTranslation();
@@ -21,20 +22,21 @@ function App() {
         <section className="w-full">
           <Banner />
         </section>
-        <section className="w-full flex flex-col gap-4 p-4">
+        <section className="w-full flex flex-col gap-6 p-4">
           <article className="flex flex-col gap-2">
-            <h2>{t("dapp_favorite_title", { defaultValue: "즐겨찾기" })}</h2>
+            <h2 className="text-lg border-b-[1px] border-gray-300">
+              {t("dapp_favorite_title", { defaultValue: "즐겨찾기" })}
+            </h2>
             <div className="flex flex-col">
               <div>즐겨찾기 1</div>
               <div>즐겨찾기 2</div>
             </div>
           </article>
-          <article className="flex flex-col gap-2">
-            <h2>{t("dapp_list_title", { defaultValue: "목록" })}</h2>
-            <div className="flex flex-col ">
-              <div>목록 1</div>
-              <div>목록 2</div>
-            </div>
+          <article className="flex flex-col">
+            <h2 className="text-lg border-b-[1px] border-gray-300">
+              {t("dapp_list_title", { defaultValue: "목록" })}
+            </h2>
+            <Dapp />
           </article>
         </section>
       </main>

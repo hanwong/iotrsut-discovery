@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import Autoplay from "embla-carousel-autoplay";
 
 import {
@@ -7,17 +8,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { Carousel } from "@/components/ui/carousel";
-import { useTranslation } from "react-i18next";
-import { BannerItem } from "./BannerItem";
-
-interface BannerData {
-  title: string;
-  img?: string;
-  description?: string;
-  link: string;
-  cta?: string;
-  bg?: string;
-}
+import { BannerItem, type BannerData } from "./BannerItem";
 
 interface BannerJson {
   banner_list: {
@@ -25,6 +16,8 @@ interface BannerJson {
     ko: BannerData[];
   };
 }
+
+const bannerUrl = import.meta.env?.VITE_BANNER_URL ?? "/data/banner.json";
 
 export function Banner() {
   const { i18n } = useTranslation();
@@ -39,7 +32,7 @@ export function Banner() {
   useEffect(() => {
     const fetchBanners = async () => {
       try {
-        const response = await fetch("/data/banner.json");
+        const response = await fetch(bannerUrl);
         if (!response.ok) {
           throw new Error("Failed to fetch banner data");
         }
@@ -76,7 +69,7 @@ export function Banner() {
   }
 
   return (
-    <div className="relative">
+    <div className="relative bg-gray-200">
       <Carousel
         setApi={setApi}
         plugins={[plugin.current]}
@@ -90,7 +83,7 @@ export function Banner() {
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="absolute bottom-4 right-6 text-white">
+      <div className="absolute bottom-4 right-6 text-white text-sm">
         {current} / {count}
       </div>
     </div>
