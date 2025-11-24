@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "build:dev": "vite build --mode dev",
+    "build:stage": "vite build --mode stage",
+    "build:prod": "vite build --mode prod",
+    "preview:dev": "vite preview --mode dev",
+    "preview:stage": "vite preview --mode stage",
+    "preview:prod": "vite preview --mode prod"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

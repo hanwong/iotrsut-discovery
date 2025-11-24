@@ -9,6 +9,7 @@
 - **TypeScript** - 타입 안정성
 - **Tailwind CSS** - 유틸리티 우선 CSS 프레임워크
 - **shadcn/ui** - 재사용 가능한 컴포넌트 라이브러리
+- **react-i18next** - 다국어 지원
 
 ## 시작하기
 
@@ -31,7 +32,8 @@ npm run dev
 프로덕션 빌드를 생성하려면:
 
 ```bash
-npm run build
+
+npm run build:prod
 ```
 
 빌드된 파일은 `dist` 디렉토리에 생성됩니다.
@@ -41,7 +43,7 @@ npm run build
 프로덕션 빌드를 미리보려면:
 
 ```bash
-npm run preview
+npm run preview:prod
 ```
 
 ## shadcn/ui 컴포넌트 추가
