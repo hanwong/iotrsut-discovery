@@ -13,11 +13,7 @@ function App() {
     <div className="flex min-h-screen items-start justify-center max-w-xl min-w-md mx-auto relative">
       <main className="flex flex-col items-start w-full">
         <section className="w-full p-2 flex items-center gap-2">
-          <Input
-            placeholder={t("search", {
-              defaultValue: "검색어 또는 URL을 입력하세요.",
-            })}
-          />
+          <Input />
           <LanguageSwitcher />
         </section>
         <section className="w-full">
