@@ -1,6 +1,8 @@
-# shadcn/ui Vite React 프로젝트
+# IoTrust discovery 프로젝트
 
-이 프로젝트는 Vite와 React, [shadcn/ui](https://ui.shadcn.com)로 구성된 빈 프로젝트입니다.
+- 배너, 즐겨찾기, Dapp 리스트들을 각 항목의 데이터 구조예 따라 분리하여 구현하였습니다.
+- 스타일은 주로 tailwind와 shadcn ui를 활용하여 레이아웃과 범용적인 컴포넌트들을 구현하였습니다.
+- 참고로 최상단 오른쪽 아이콘 버튼은 i18n 설정을 변경 가능하도록 추가해두었습니다.
 
 ## 기술 스택
 
