@@ -28,6 +28,7 @@ interface DappItemProps {
 
 export function DappItem({ dapp, isSearch }: DappItemProps) {
   const { t } = useTranslation();
+  const isWebp = dapp.icon.includes(".webp");
 
   const currentEnv =
     (import.meta.env?.VITE_APP_ENV as string | undefined) ??
@@ -46,15 +47,23 @@ export function DappItem({ dapp, isSearch }: DappItemProps) {
     window.open(dapp.link, "_blank", "noopener,noreferrer");
   };
 
-  const item = () => (
-    <div className="flex gap-4 px-2 py-4 border-b-[1px] cursor-pointer">
-      <div className="w-12 h-12 rounded-lg shadow-md overflow-hidden">
+  const renderIcon = () => (
+    <div className="w-12 h-12 rounded-lg shadow-md overflow-hidden">
+      <picture>
+        {isWebp && <source srcSet={dapp.icon} type="image/webp" />}
         <img
           src={dapp.icon}
           alt={dapp.name}
           className="w-full h-full object-cover"
+          loading="lazy"
         />
-      </div>
+      </picture>
+    </div>
+  );
+
+  const item = () => (
+    <div className="flex gap-4 px-2 py-4 border-b-[1px] cursor-pointer">
+      {renderIcon()}
       <div className="flex-1 min-w-0">
         <h3 className="font-semibold">{dapp.name}</h3>
         <p className="text-sm text-muted-foreground truncate">
@@ -81,13 +90,7 @@ export function DappItem({ dapp, isSearch }: DappItemProps) {
             </DrawerClose>
           </div>
           <div className=" flex gap-4 pb-2">
-            <div className="w-12 h-12 rounded-lg shadow-md overflow-hidden">
-              <img
-                src={dapp.icon}
-                alt={dapp.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            {renderIcon()}
             <div className="flex-1 min-w-0">
               <h3 className="font-semibold">{dapp.name}</h3>
               {dapp.network && (

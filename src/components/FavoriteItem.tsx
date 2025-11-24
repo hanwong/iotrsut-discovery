@@ -25,6 +25,7 @@ const wait = () => new Promise((resolve) => setTimeout(resolve));
 export function FavoriteItem({ dapp, deleteFavorite }: FavoriteItemProps) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
+  const isWebp = dapp.icon.includes(".webp");
 
   const currentEnv =
     (import.meta.env?.VITE_APP_ENV as string | undefined) ??
@@ -43,16 +44,24 @@ export function FavoriteItem({ dapp, deleteFavorite }: FavoriteItemProps) {
     window.open(dapp.link, "_blank", "noopener,noreferrer");
   };
 
+  const renderIcon = () => (
+    <div className="w-12 h-12 rounded-lg shadow-md overflow-hidden">
+      <picture>
+        {isWebp && <source srcSet={dapp.icon} type="image/webp" />}
+        <img
+          src={dapp.icon}
+          alt={dapp.name}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </picture>
+    </div>
+  );
+
   return (
     <div className="flex gap-2 py-4 border-b-[1px] cursor-pointer">
       <div className="flex flex-1 min-w-0 gap-4" onClick={handleClick}>
-        <div className="w-12 h-12 rounded-lg shadow-md overflow-hidden">
-          <img
-            src={dapp.icon}
-            alt={dapp.name}
-            className="w-full h-full object-cover"
-          />
-        </div>
+        {renderIcon()}
         <div className="flex-1 min-w-0">
           <h3 className="font-semibold">{dapp.name}</h3>
           <p className="text-sm text-muted-foreground truncate">

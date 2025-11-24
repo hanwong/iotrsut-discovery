@@ -19,6 +19,7 @@ export function BannerItem({ banner }: BannerItemProps) {
 
   if (banner.img) {
     // 이미지 배너 타입
+    const isWebp = banner.img.includes(".webp");
     return (
       <div
         className="cursor-pointer"
@@ -26,10 +27,36 @@ export function BannerItem({ banner }: BannerItemProps) {
         role="button"
         tabIndex={0}
       >
-        <img src={banner.img} alt={banner.title} className="w-full h-auto" />
+        <picture>
+          {isWebp && <source srcSet={banner.img} type="image/webp" />}
+          <img
+            src={banner.img}
+            alt={banner.title}
+            className="w-full h-auto "
+            loading="lazy"
+          />
+        </picture>
       </div>
     );
   }
+
+  const renderIcon = () => {
+    if (!banner.bg) return null;
+
+    const isWebp = banner.bg.includes(".webp");
+
+    return (
+      <picture>
+        {isWebp && <source srcSet={banner.bg} type="image/webp" />}
+        <img
+          src={banner.bg}
+          alt={banner.title}
+          className="w-full h-auto"
+          loading="lazy"
+        />
+      </picture>
+    );
+  };
 
   // 텍스트 배너 타입
   return (
@@ -39,9 +66,7 @@ export function BannerItem({ banner }: BannerItemProps) {
       role="button"
       tabIndex={0}
     >
-      {banner.bg && (
-        <img src={banner.bg} alt={banner.title} className="w-full h-auto" />
-      )}
+      {renderIcon()}
       <div className="absolute inset-0 flex flex-col justify-center items-start p-6">
         {banner.description && (
           <p className="text-white/90 text-xl mb-8">{banner.description}</p>
