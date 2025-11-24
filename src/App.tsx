@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { CarouselContent, CarouselItem } from "./components/ui/carousel";
-import { Carousel } from "./components/ui/carousel";
-import { Input } from "./components/ui/input";
-import { LanguageSwitcher } from "./components/LanguageSwitcher";
+
+import { Input } from "@/components/ui/input";
+import { Banner } from "@/components/Banner";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 function App() {
   const { t } = useTranslation();
@@ -19,16 +19,7 @@ function App() {
           <LanguageSwitcher />
         </section>
         <section className="w-full">
-          <Carousel>
-            <CarouselContent>
-              <CarouselItem>
-                <div>Item 1</div>
-              </CarouselItem>
-              <CarouselItem>
-                <div>Item 2</div>
-              </CarouselItem>
-            </CarouselContent>
-          </Carousel>
+          <Banner />
         </section>
         <section className="w-full flex flex-col gap-4 p-4">
           <article className="flex flex-col gap-2">

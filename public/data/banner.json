@@ -1,0 +1,46 @@
+{
+  "banner_list": {
+    "en": [
+      {
+        "title": "Campaign MAPO Airdrop",
+        "img": "https://raw.githubusercontent.com/KyungeunKim/iotrust-frontend-homework/main/images/banner_mapo_en.png",
+        "link": "https://store.dcentwallet.com/blogs/post/tap-that-drop-with-map-protocol"
+      },
+      {
+        "title": "D'CENT Wallet",
+        "description": "Enhance your security with D'CENT biometric wallet",
+        "link": "https://store.dcentwallet.com",
+        "cta": "Buy Now",
+        "bg": "https://raw.githubusercontent.com/KyungeunKim/iotrust-frontend-homework/main/images/banner_dcent.png"
+      },
+      {
+        "title": "D'CENT Blog",
+        "description": "Visit the new D’CENT Blog to explore the latest updates first!",
+        "link": "https://store.dcentwallet.com/blogs/post",
+        "cta": "Explore",
+        "bg": "https://raw.githubusercontent.com/KyungeunKim/iotrust-frontend-homework/main/images/banner_blog.png"
+      }
+    ],
+    "ko": [
+      {
+        "title": "Campaign MAPO Airdrop",
+        "img": "https://raw.githubusercontent.com/KyungeunKim/iotrust-frontend-homework/main/images/banner_mapo_kr.png",
+        "link": "https://store-kr.dcentwallet.com/blogs/post/tap-that-drop-with-map-protocol"
+      },
+      {
+        "title": "D'CENT Wallet",
+        "description": "디센트 지문인증형 지갑으로 한층 더 강화된 보안을 경험하세요!",
+        "link": "https://store-kr.dcentwallet.com",
+        "cta": "구매하기",
+        "bg": "https://raw.githubusercontent.com/KyungeunKim/iotrust-frontend-homework/main/images/banner_dcent.png"
+      },
+      {
+        "title": "D'CENT Blog",
+        "description": "새로운 디센트 블로그를 방문하여 최신 업데이트를 먼저 확인해보세요!!",
+        "link": "https://store-kr.dcentwallet.com/blogs/post",
+        "cta": "확인하기",
+        "bg": "https://raw.githubusercontent.com/KyungeunKim/iotrust-frontend-homework/main/images/banner_blog.png"
+      }
+    ]
+  }
+}
