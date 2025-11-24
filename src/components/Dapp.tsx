@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+
+import { Input } from "@/components/ui/input";
 import { DappItem, type DappData } from "./DappItem";
 
 export interface DappJson {
@@ -14,6 +16,7 @@ const dappUrl = import.meta.env?.VITE_DAPP_URL ?? "/data/dapp.json";
 export function Dapp() {
   const { t, i18n } = useTranslation();
   const [dapps, setDapps] = useState<DappData[]>([]);
+  const [search, setSearch] = useState<string>("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -36,6 +39,17 @@ export function Dapp() {
     fetchDapps();
   }, [i18n.language]);
 
+  const filteredDapps = useMemo(() => {
+    if (!dapps.length) return [];
+
+    if (search) {
+      return dapps.filter(
+        ({ name, description }) =>
+          name.includes(search) || description.includes(search)
+      );
+    }
+  }, [dapps, search]);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center p-8">
@@ -56,9 +70,23 @@ export function Dapp() {
 
   return (
     <div className="flex flex-col">
-      {dapps.map((dapp, index) => (
-        <DappItem key={index} dapp={dapp} />
-      ))}
+      <div className="py-2">
+        <Input
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder={t("search", {
+            defaultValue: "검색어를 입력하세요.",
+          })}
+        />
+      </div>
+      {search &&
+        filteredDapps &&
+        filteredDapps.map((dapp, index) => (
+          <DappItem key={index} dapp={dapp} isSearch={!!search} />
+        ))}
+      {!search &&
+        dapps.map((dapp, index) => (
+          <DappItem key={index} dapp={dapp} isSearch={!!search} />
+        ))}
     </div>
   );
 }

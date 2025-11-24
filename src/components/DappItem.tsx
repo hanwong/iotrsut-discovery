@@ -23,9 +23,10 @@ interface DappData {
 
 interface DappItemProps {
   dapp: DappData;
+  isSearch: boolean;
 }
 
-export function DappItem({ dapp }: DappItemProps) {
+export function DappItem({ dapp, isSearch }: DappItemProps) {
   const { t } = useTranslation();
 
   const currentEnv =
@@ -45,25 +46,31 @@ export function DappItem({ dapp }: DappItemProps) {
     window.open(dapp.link, "_blank", "noopener,noreferrer");
   };
 
+  const item = () => (
+    <div className="flex gap-4 px-2 py-4 border-b-[1px] cursor-pointer">
+      <div className="w-12 h-12 rounded-lg shadow-md overflow-hidden">
+        <img
+          src={dapp.icon}
+          alt={dapp.name}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="flex-1 min-w-0">
+        <h3 className="font-semibold">{dapp.name}</h3>
+        <p className="text-sm text-muted-foreground truncate">
+          {dapp.description}
+        </p>
+      </div>
+    </div>
+  );
+
+  if (isSearch) {
+    return <div onClick={handleClick}>{item()}</div>;
+  }
+
   return (
     <Drawer>
-      <DrawerTrigger asChild>
-        <div className="flex gap-4 px-2 py-4 border-b-[1px] cursor-pointer">
-          <div className="w-12 h-12 rounded-lg shadow-md overflow-hidden">
-            <img
-              src={dapp.icon}
-              alt={dapp.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="flex-1 min-w-0">
-            <h3 className="font-semibold">{dapp.name}</h3>
-            <p className="text-sm text-muted-foreground truncate">
-              {dapp.description}
-            </p>
-          </div>
-        </div>
-      </DrawerTrigger>
+      <DrawerTrigger asChild>{item()}</DrawerTrigger>
       <DrawerContent>
         <div className="relative min-h-[50vh] p-6">
           <div className="absolute top-2 right-0">
