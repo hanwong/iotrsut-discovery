@@ -43,9 +43,11 @@ export function Dapp() {
     if (!dapps.length) return [];
 
     if (search) {
+      const normalizedSearch = search.toLowerCase();
       return dapps.filter(
         ({ name, description }) =>
-          name.includes(search) || description.includes(search)
+          name.toLowerCase().includes(normalizedSearch) ||
+          description.toLowerCase().includes(normalizedSearch)
       );
     }
   }, [dapps, search]);
