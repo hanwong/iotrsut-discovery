@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { DappItem, type DappData } from "./DappItem";
+import { FavoriteItem } from "./FavoriteItem";
+import { type DappData } from "./DappItem";
 
 export interface DappJson {
   dapp_list: {
@@ -9,17 +10,18 @@ export interface DappJson {
   };
 }
 
-const dappUrl = import.meta.env?.VITE_DAPP_URL ?? "/data/dapp.json";
+const favoriteUrl = import.meta.env?.VITE_FAVORITE_URL ?? "/data/favorite.json";
 
-export function Dapp() {
+export function Favorite() {
   const { t, i18n } = useTranslation();
   const [dapps, setDapps] = useState<DappData[]>([]);
+  const [deletedFavorites, setDeletedFavorites] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchDapps = async () => {
       try {
-        const response = await fetch(dappUrl);
+        const response = await fetch(favoriteUrl);
         if (!response.ok) {
           throw new Error("Failed to fetch dapp data");
         }
@@ -36,6 +38,16 @@ export function Dapp() {
     fetchDapps();
   }, [i18n.language]);
 
+  const favorites = useMemo(() => {
+    if (!deletedFavorites.length) return dapps;
+
+    return dapps.filter(({ id }) => !deletedFavorites.includes(id));
+  }, [dapps, deletedFavorites]);
+
+  const deleteFavorite = useCallback((id: string) => {
+    setDeletedFavorites((curr) => [id, ...curr]);
+  }, []);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center p-8">
@@ -44,7 +56,7 @@ export function Dapp() {
     );
   }
 
-  if (!dapps.length) {
+  if (!favorites.length) {
     return (
       <div className="flex items-center justify-center p-8">
         <div className="text-muted-foreground">
@@ -56,8 +68,8 @@ export function Dapp() {
 
   return (
     <div className="flex flex-col">
-      {dapps.map((dapp, index) => (
-        <DappItem key={index} dapp={dapp} />
+      {favorites.map((dapp, index) => (
+        <FavoriteItem key={index} dapp={dapp} deleteFavorite={deleteFavorite} />
       ))}
     </div>
   );

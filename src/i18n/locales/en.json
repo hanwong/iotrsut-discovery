@@ -7,5 +7,6 @@
   "go_to_dapp": "Go",
   "button_cancel": "Cancel",
   "button_confirm": "Confirm",
-  "search": "Search or enter URL"
+  "search": "Search or enter URL",
+  "empty_data": "Empty data."
 }

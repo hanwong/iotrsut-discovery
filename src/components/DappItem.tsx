@@ -11,7 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 interface DappData {
-  id: number;
+  id: string;
   name: string;
   description: string;
   icon: string;
@@ -48,7 +48,7 @@ export function DappItem({ dapp }: DappItemProps) {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <div className="flex gap-4 px-2 py-4 border-b-[1px]">
+        <div className="flex gap-4 px-2 py-4 border-b-[1px] cursor-pointer">
           <div className="w-12 h-12 rounded-lg shadow-md overflow-hidden">
             <img
               src={dapp.icon}

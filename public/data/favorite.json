@@ -1,0 +1,48 @@
+{
+  "dapp_list": {
+    "en": [
+      {
+        "id": "3",
+        "name": "Astar Portal",
+        "description": "Astar Portal is the official Astar Network application for using everything that Astar Network offers.",
+        "icon": "https://raw.githubusercontent.com/KyungeunKim/iotrust-frontend-homework/main/images/icon_astar.png",
+        "link": "https://portal.astar.network/",
+        "network": ["Astar"],
+        "platform": ["ios", "android"],
+        "env": ["dev", "stage"]
+      },
+      {
+        "id": "7",
+        "name": "PoolTogether",
+        "description": "PoolTogether is an Ethereum based application that makes saving money as fun as a game. You join a pool by getting a “savings ticket”. Each Savings Ticket gives you a chance to win a prize, but even if you don’t win, you keep all your money!",
+        "icon": "https://raw.githubusercontent.com/KyungeunKim/iotrust-frontend-homework/main/images/icon_pooltogether.png",
+        "link": "https://app.pooltogether.com/",
+        "network": ["Ethereum"],
+        "platform": ["ios", "android"],
+        "env": ["dev", "stage", "prod"]
+      }
+    ],
+    "ko": [
+      {
+        "id": "3",
+        "name": "Astar Portal",
+        "description": "아스타포탈은 Astar Network에서 제공하는 모든 것을 사용하기 위한 Astar Network의 공식 애플리케이션입니다.",
+        "icon": "https://raw.githubusercontent.com/KyungeunKim/iotrust-frontend-homework/main/images/icon_astar.png",
+        "link": "https://portal.astar.network/",
+        "network": ["Astar"],
+        "platform": ["ios", "android"],
+        "env": ["dev", "stage"]
+      },
+      {
+        "id": "7",
+        "name": "PoolTogether",
+        "description": "PoolTogether는 저축을 재미있게 하는 이더리움 기반의 서비스입니다. 자산을 예치하면 “저축 티켓“을 받아 '풀'에 참여합니다. 각 저축 티켓은 풀에서 발생한 이자를 받을 수있는 기회를 제공하지만, 당첨되지 않더라도 손실이 없습니다.",
+        "icon": "https://raw.githubusercontent.com/KyungeunKim/iotrust-frontend-homework/main/images/icon_pooltogether.png",
+        "link": "https://app.pooltogether.com/",
+        "network": ["Ethereum"],
+        "platform": ["ios", "android"],
+        "env": ["dev", "stage", "prod"]
+      }
+    ]
+  }
+}

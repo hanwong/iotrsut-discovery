@@ -7,5 +7,6 @@
   "go_to_dapp": "서비스 바로가기",
   "button_cancel": "취소",
   "button_confirm": "확인",
-  "search": "검색어 또는 URL을 입력하세요."
+  "search": "검색어 또는 URL을 입력하세요.",
+  "empty_data": "등록된 데이터가 없습니다."
 }
