@@ -1,24 +1,42 @@
-import { Button } from "@/components/ui/button";
+import { CarouselContent, CarouselItem } from "./components/ui/carousel";
+import { Carousel } from "./components/ui/carousel";
+import { Input } from "./components/ui/input";
 
 function App() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <main className="flex flex-col items-center gap-8 p-8">
-        <div className="flex flex-col items-center gap-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight">
-            shadcn/ui 프로젝트
-          </h1>
-          <p className="text-muted-foreground max-w-md">
-            Vite와 React, shadcn/ui로 구성된 빈 프로젝트입니다.
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <Button>기본 버튼</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="outline">Outline</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="destructive">Destructive</Button>
-        </div>
+    <div className="flex min-h-screen items-start justify-center max-w-xl min-w-md mx-auto">
+      <main className="flex flex-col items-start w-full">
+        <section className="w-full p-2">
+          <Input placeholder="Search" />
+        </section>
+        <section className="w-full">
+          <Carousel>
+            <CarouselContent>
+              <CarouselItem>
+                <div>Item 1</div>
+              </CarouselItem>
+              <CarouselItem>
+                <div>Item 2</div>
+              </CarouselItem>
+            </CarouselContent>
+          </Carousel>
+        </section>
+        <section className="w-full flex flex-col gap-4 p-4">
+          <article>
+            <h2>즐겨찾기</h2>
+            <div className="flex flex-col gap-4">
+              <div>즐겨찾기 1</div>
+              <div>즐겨찾기 2</div>
+            </div>
+          </article>
+          <article>
+            <h2>목록</h2>
+            <div className="flex flex-col gap-4">
+              <div>목록 1</div>
+              <div>목록 2</div>
+            </div>
+          </article>
+        </section>
       </main>
     </div>
   );
