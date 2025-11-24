@@ -53,6 +53,7 @@ npx shadcn@latest add [component-name]
 ```
 
 예시:
+
 ```bash
 npx shadcn@latest add card
 npx shadcn@latest add dialog
